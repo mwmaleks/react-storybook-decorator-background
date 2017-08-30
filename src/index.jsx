@@ -51,15 +51,17 @@ export class BackgroundColor extends React.Component {
     return (
       <div style={Object.assign({},
           style.wrapper,
+          this.props.wrapper,
           { backgroundColor: this.state.selected }
         )}>
         {this.story()}
-        <ul style={style.swatches}>
+        <ul style={Object.assign(style.swatches, this.props.swatches)}>
           { this.colors.map(color => (
             <li
               key={color}
               style={Object.assign({},
-                style.swatch, {
+                style.swatch,
+                this.props.swatch, {
                   backgroundColor: color,
                   boxShadow: this.state.selected === color ? 'inset 0 0 0 2px rgba(0, 0, 0, 0.5)' : 'none'
                 }
